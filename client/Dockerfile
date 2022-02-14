@@ -7,4 +7,4 @@ COPY . .
 RUN yarn
 RUN yarn build
 
-CMD yarn --port 3000
+CMD yarn start --port 3000
