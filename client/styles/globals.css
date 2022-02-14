@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+  --w-size: 28px;
+  --h-size: 28px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.75em;
+}
+
+/* #region Icon */
+.i-24 {
+  --w-size: 24px;
+  --h-size: 24px;
+}
+
+.i-20 {
+  --w-size: 20px;
+  --h-size: 20px;
+}
+
+[role="presentation"] {
+  width: max-content !important;
+  height: max-content !important;
+}
+
+[role="presentation"] svg {
+  width: var(--w-size) !important;
+  height: var(--h-size) !important;
+}
+
+/* #endregion */
+
+/* #region Tooltip */
+
+[data-tooltip]:not([data-tooltip=""]) {
+  @apply relative flex justify-center items-center;
+}
+
+[data-tooltip]:not([data-tooltip=""])::after {
+  content: attr(data-tooltip);
+  @apply absolute py-2 px-4 rounded-lg text-sm z-10 bg-neutral-100 text-neutral-800 hidden items-center transition shadow whitespace-pre-wrap;
+}
+
+[data-tooltip]:not([data-tooltip=""]):hover::after {
+  @apply flex;
+}
+
+[data-tooltip][data-tooltip-top]:not([data-tooltip=""])::after {
+  @apply bottom-full -translate-y-1 animate-slideScaleToTop;
+}
+
+[data-tooltip][data-tooltip-bottom]:not([data-tooltip=""])::after {
+  @apply top-full translate-y-1 animate-slideScaleToBottom;
+}
+
+[data-tooltip][data-tooltip-left]:not([data-tooltip=""])::after {
+  @apply right-full -translate-x-1 animate-slideScaleToLeft;
+}
+
+[data-tooltip][data-tooltip-right]:not([data-tooltip=""])::after {
+  @apply left-full translate-x-1 animate-slideScaleToRight;
+}
+
+[data-tooltip][data-tooltip-dark]:not([data-tooltip=""])::after {
+  @apply bg-neutral-800 text-neutral-50;
+}
+
+[data-tooltip][data-tooltip-accent]:not([data-tooltip=""])::after {
+  @apply bg-orange-500 text-neutral-900;
+}
+
+[data-tooltip][data-tooltip-success]:not([data-tooltip=""])::after {
+  @apply bg-green-500 text-neutral-900;
+}
+
+[data-tooltip][data-tooltip-error]:not([data-tooltip=""])::after {
+  @apply bg-red-500 text-neutral-900;
+}
+
+[data-tooltip][data-tooltip-info]:not([data-tooltip=""])::after {
+  @apply bg-sky-500 text-neutral-900;
+}
+
+/* #endregion */

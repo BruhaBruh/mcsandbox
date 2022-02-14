@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: postgres-sandbox-db
+    restart: always
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    env_file:
+      - .env.production
+    ports:
+      - 5438:5432
+    networks:
+      - app-network
+
+  server:
+    build: ./server
+    container_name: dotnet-sandbox-server
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env.production
+    networks:
+      - app-network
+
+  client:
+    build: ./client
+    container_name: svelte-sandbox-client
+    restart: always
+    depends_on:
+      - server
+    networks:
+      - app-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: always
+    depends_on:
+      - client
+    ports:
+      - "5080:80"
+    networks:
+      - app-network
+    volumes:
+      - ./.nginx/nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  app-network:
+    driver: bridge
