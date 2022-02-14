@@ -36,7 +36,7 @@ services:
 
   webserver:
     image: nginx:alpine
-    container_name: webserver
+    container_name: webserver-sandbox
     restart: always
     depends_on:
       - client
