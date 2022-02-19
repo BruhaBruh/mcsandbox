@@ -3,7 +3,6 @@ import {
   Icon24CubeBoxOutline,
   Icon24ServicesOutline,
   Icon28BombOutline,
-  Icon28CancelCircleOutline,
   Icon28CheckCircleOutline,
   Icon28WorkOutline,
 } from "@vkontakte/icons";
@@ -46,7 +45,7 @@ const AdminOrders: NextPage = () => {
   });
 
   React.useEffect(() => {
-    let w: OrderFilterInput = {status: { neq: OrderStatus.Rejected }};
+    let w: OrderFilterInput = { status: { neq: OrderStatus.Rejected } };
     if (filterType) {
       w = { ...w, product: { type: { eq: filterType } } };
     }
