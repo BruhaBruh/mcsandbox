@@ -63,6 +63,11 @@ namespace GPPlanetGQL.Discord
             return du;
         }
 
+        public void SendMessage(ulong discordId, string msg)
+        {
+            var user = GetUser(discordId);
+            user.SendMessageAsync(msg);
+        }
         public ulong[] GetUsersInGuild()
         {
             var g = GetGuild();

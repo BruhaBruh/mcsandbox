@@ -1,5 +1,7 @@
 ﻿using System.Security.Claims;
 
+using GPPlanetGQL.Discord;
+
 using HotChocolate.Subscriptions;
 
 using Sandbox.Exceptions;
@@ -194,7 +196,7 @@ namespace Sandbox.GraphQL
             return true;
         }
 
-        public bool SendMessage(int chatId, string message, int? replyMessageId, [Service] sandboxContext ctx,
+        public bool SendMessage(int chatId, string message, int? replyMessageId, [Service] sandboxContext ctx, [Service] DiscordBot bot,
                 [GlobalState(nameof(ClaimsPrincipal))] ClaimsPrincipal claimsPrincipal, [Service] ITopicEventSender sender)
         {
             var discordId = claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -221,7 +223,12 @@ namespace Sandbox.GraphQL
 
             ctx.SaveChanges();
 
+
             _ = sender.SendAsync($"{chat.OrderchatId}_UpdatedChatMessage", msg.Entity);
+
+            if (u.DiscordId != order.CustomerId)
+                bot.SendMessage((ulong)order.CustomerId, $"Новое собщение по заказу #{order.OrderId}");
+            
             return true;
         }
 
