@@ -65,7 +65,7 @@ namespace GPPlanetGQL.Discord
 
         public void SendMessage(ulong discordId, string msg)
         {
-            var user = GetUser(discordId);
+            var user = _client.GetUser(discordId);
             Console.WriteLine($"USERUSERUSERUSER  {user}  USERUSERUSERUSER");
             var res = user.SendMessageAsync(msg).GetAwaiter().GetResult();
             Console.WriteLine($"RESRESRESRESRES  {res}  RESRESRESRESRES");
