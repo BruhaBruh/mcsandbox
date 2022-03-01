@@ -62,6 +62,7 @@ namespace Sandbox
                     options.ClientSecret = clientSecret ?? "";
                     options.CallbackPath = new PathString("/api/auth/callback");
                     options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
+                    options.Scope.Add("identify");
                 });
 
             services.AddAuthorization();
