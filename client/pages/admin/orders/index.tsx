@@ -4,7 +4,7 @@ import {
   Icon24ServicesOutline,
   Icon28BombOutline,
   Icon28CheckCircleOutline,
-  Icon28WorkOutline,
+  Icon28WorkOutline
 } from "@vkontakte/icons";
 import { NextPage } from "next";
 import Head from "next/head";
@@ -22,7 +22,7 @@ import {
   OrderFilterInput,
   OrderStatus,
   ProductType,
-  useAdminOrdersQuery,
+  useAdminOrdersQuery
 } from "../../../generated/graphql";
 import isEqual from "../../../helpers/isEqual";
 import useIsAdmin from "../../../hooks/useIsAdmin";
