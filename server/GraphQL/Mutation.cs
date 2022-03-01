@@ -226,6 +226,7 @@ namespace Sandbox.GraphQL
 
             _ = sender.SendAsync($"{chat.OrderchatId}_UpdatedChatMessage", msg.Entity);
 
+            Console.WriteLine($"DEBUG: {u.DiscordId != order.CustomerId}");
             if (u.DiscordId != order.CustomerId)
                 bot.SendMessage((ulong)order.CustomerId, $"Новое собщение по заказу #{order.OrderId}");
             
