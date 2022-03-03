@@ -141,13 +141,13 @@ const About: NextPage = () => {
         <Paper
           withoutPadding
           className="relative flex flex-col space-y-1"
-          style={{ aspectRatio: "418 / 538" }}
+          style={{ aspectRatio: "1018 / 720" }}
         >
           <Image
             className="absolute object-fill object-center"
-            src={"/images/portfolio/thnl0DC3ZrU.jpg"}
-            width={418 * 1.5}
-            height={538 * 1.5}
+            src={"/images/portfolio/ad7ee33ad72efc27.png"}
+            width={1018}
+            height={720}
           />
         </Paper>
       </MasonryItem>
