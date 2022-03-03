@@ -145,7 +145,7 @@ const About: NextPage = () => {
         >
           <Image
             className="absolute object-fill object-center"
-            src={"/images/portfolio/ad7ee33ad72efc27.png"}
+            src={"/images/portfolio/ad7ee33ad72efc27.jpg"}
             width={1018}
             height={720}
           />
